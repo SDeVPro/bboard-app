@@ -1,0 +1,70 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Asosiy{%endblock%}-E'lonlar doskasi</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css'%}">
+    {% bootstrap_javascript jquery='slim'%}
+</head>
+<body class="container-fluid">
+    <header class="mb-4">
+        <h1 class="display-1 text-center">E'lonlar</h1>
+    </header>
+    <div class="row">
+        <ul class="col nav justify-content-end border">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:register' %}">Registratsiya</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Profil</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'main:profile'%}">Mening e'lonlarim</a>
+                    <a class="dropdown-item" href="{% url 'main:profile_change' %}">Ma'lumotlarni o'zgartirish</a>
+                    <a class="dropdown-item" href="{% url 'main:password_change' %}">Parolni o'zgartirish</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'main:logout'%}">Chiqish</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="">O'chirish</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'main:loginn'%}">Kirish</a></li>
+            {%endif%}
+        </ul>
+    </div>
+    <div class="row">
+        <nav class="col-md-auto nav flex-column border">
+            <a class="nav-link root" href="{% url 'main:index' %}">Bosh sahifa</a>
+            <a class="nav-link root" href="{% url 'main:other' page='about'%}">Sayt haqida</a>
+            <span class="nav-link root font-weight-bold">Ko'chmas mulk</span>
+            <a class="nav-link" href="#">Turar joy</a>
+            <a class="nav-link" href="#">Omborlar</a>
+            <a class="nav-link" href="#">Garajlar</a>
+            <a class="nav-link" href="#">Hovli joy</a>
+            <span class="nav-link root font-weight-bold">Transport</span>
+            <a class="nav-link" href="#">Yengil</a>
+            <a class="nav-link" href="#">Yuk mashinasi</a>
+            <a class="nav-link" href="#">Mototsikl</a>
+            <a class="nav-link" href="#">Suv transporti</a>
+        </nav>
+        <section class="col border py-2">
+            {% bootstrap_messages%}
+            {% block content%}
+            {% endblock%}
+        </section>
+
+    </div>
+    <footer class="mt-3">
+        <p class="text-right font-italic">&copy;SDeVPro</p>
+    </footer>
+    
+</body>
+</html>

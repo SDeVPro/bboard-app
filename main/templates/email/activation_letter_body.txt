@@ -1,0 +1,5 @@
+Hurmatli Foydalnuvchi {{user.username}}
+Siz e'lonlar doskasi saytidan registratsiyadan o'tdingiz!
+{{host}}{% url 'main:register_activate' sign=sign%}
+Ko'rishguncha
+Hurmat bilan Say adminstratori

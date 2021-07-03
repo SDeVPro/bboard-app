@@ -1,0 +1,11 @@
+{%extends 'layout/basic.html'%}
+{% load bootstrap4 %}
+{% block title%}Foydalanuvchi ma'lumotlarini o'zgartirish {%endblock%}
+{% block content%}
+<h2>Foydalanuvchi shaxsiy ma'lumotlarini o'zgartirish qismi {{user.username}}</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    {% bootstrap_form form layout='horizontal'%}
+    {% buttons submit="Saqlash"%}{%endbuttons%}
+</form>
+{% endblock %}

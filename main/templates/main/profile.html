@@ -1,0 +1,11 @@
+{%extends 'layout/basic.html'%}
+{%block title%}Foydalanuvchi Profili{%endblock%}
+{%block content%} 
+<h2>Foydalanuvchi profili {{user.username}}</h2>
+{%if user.first_name and user.last_name%}
+<p>Salom {{user.first_name}} {{user.last_name}}</p>
+{%else%}
+<p>Salom</p>
+{%endif%}
+<h3>Sizning e'lonlaringiz</h3>
+{%endblock%}
